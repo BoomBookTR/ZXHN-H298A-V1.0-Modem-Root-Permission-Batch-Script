@@ -8,7 +8,7 @@
 
 1- Bu bat dosyalarını [zte-config-utility-master](https://github.com/mkst/zte-config-utility "zte-config-utility-master") içine atınız.
 
-2- 1-PRESS_HERE.bat dosyasını açınız ve Python Script klasör yolunuzu düzenleyin. 
+2- 1-PRESS_HERE.bat dosyasını notepad++ vb. düzenleyici ile açınız ve Python Script klasör yolunuzu düzenleyin. 
    
     (Python yoksa indirip kurun. Link: https://www.python.org/downloads/)
     Python kurarken Add Phyton to Path seçeneğini işaretleyin.
