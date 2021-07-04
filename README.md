@@ -3,6 +3,10 @@
 
 [![Everything Is AWESOME](https://yt-embed.herokuapp.com/embed?v=G1BrJW67SMQ)](https://www.youtube.com/watch?v=G1BrJW67SMQ "Everything Is AWESOME")
 
+# Some markdown
+*click below*
+<a href="example.com" target="_blank">New Tab</a>
+
 <b>Yapılması gerekenler;</b>
 
 
