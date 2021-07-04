@@ -1,0 +1,1 @@
+# ZXHN-H298A-V1.0-Modem-Root-Permission-Batch-Script
