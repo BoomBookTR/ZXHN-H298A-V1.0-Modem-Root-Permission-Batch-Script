@@ -1,17 +1,16 @@
 # ZXHN-H298A-V1.0-Modem-Root-Permission-Batch-Script
 İşlem basamakları videolu olarak şu videoda mevcuttur.
 
-[![Everything Is AWESOME](https://yt-embed.herokuapp.com/embed?v=G1BrJW67SMQ)](https://www.youtube.com/watch?v=G1BrJW67SMQ "Everything Is AWESOME"){:target="_blank" rel="noopener"}
+[![Everything Is AWESOME](https://yt-embed.herokuapp.com/embed?v=G1BrJW67SMQ)](https://www.youtube.com/watch?v=G1BrJW67SMQ "Everything Is AWESOME")
 
 <b>Yapılması gerekenler;</b>
 
 
-1- Bu bat dosyalarını [zte-config-utility-master](https://github.com/mkst/zte-config-utility "zte-config-utility-master"){:target="_blank" rel="noopener"} içine atınız.
+1- Bu bat dosyalarını [zte-config-utility-master](https://github.com/mkst/zte-config-utility "zte-config-utility-master")içine atınız.
 
 2- 1-PRESS_HERE.bat dosyasını notepad++ vb. düzenleyici ile açınız ve Python Script klasör yolunuzu düzenleyin. 
-   
-    (Python yoksa indirip kurun. Link: https://www.python.org/downloads/)
-    Python kurarken Add Phyton to Path seçeneğini işaretleyin.
+   (Python yoksa indirip kurun. Link: https://www.python.org/downloads/)
+    Python kurarken **Add Phyton to Path** seçeneğini işaretleyin.
 
 Aşağıdaki alanı güncelleyin.
 
