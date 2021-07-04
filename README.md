@@ -3,7 +3,6 @@
 
 [![Everything Is AWESOME](https://yt-embed.herokuapp.com/embed?v=G1BrJW67SMQ)](https://www.youtube.com/watch?v=G1BrJW67SMQ "Everything Is AWESOME")
 
-
 <b>Yapılması gerekenler;</b>
 
 
@@ -12,7 +11,7 @@
 2- 1-PRESS_HERE.bat dosyasını açınız ve Python Script klasör yolunuzu düzenleyin. 
    
     (Python yoksa indirip kurun. Link: https://www.python.org/downloads/)
-    Python kurarken <b><i>Add Phyton to Path</i></b> seçeneğini işaretleyin.
+    Python kurarken Add Phyton to Path seçeneğini işaretleyin.
 
 Aşağıdaki alanı güncelleyin.
 
