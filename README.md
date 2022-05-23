@@ -14,5 +14,6 @@
 3- 1-PRESS_HERE.bat dosyasına tıklayın ve işlemlere devam ediniz. Modem Seri Numarasını sorduğunda alana modem arayüzünden kopyalayıp CTRL+V ile ya da farenin sağ tuşu ile yapıştırınız ve ilerleyiniz.
 
 6- Sonrasında cmd işlemlerini tamamlayıp config.bin dosyasını modeminize geri yükleyebilirsiniz.
+
 7-;)
 	
