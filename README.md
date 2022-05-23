@@ -11,20 +11,9 @@
 2- 1-PRESS_HERE.bat dosyasını notepad++ vb. düzenleyici ile açınız ve Python Script klasör yolunuzu düzenleyin. 
    (Python yoksa indirip kurun. Link: https://www.python.org/downloads/ )
     Python kurarken **Add Phyton to Path** seçeneğini işaretleyin.
-
-Aşağıdaki alanı güncelleyin.
-
-		 %LocalAppData%\Programs\Python\Python39\Scripts
 		
 		
-3- Aşağıdaki satırlardaki ZTXXXXXXXXXXXX alanlarını kendi Modem Seri Numarasına göre düzenleyiniz.
-
-       (satır 38)		py examples/decode.py --serial ZTXXXXXXXXXXXX config.bin config.xml
-
-       (satır 57)		py examples/encode.py --serial ZTXXXXXXXXXXXX --signature "ZXHN H298A V1.0" config.xml config.bin
-
-		
-4- Sonrasında config.bin dosyasını da zte-config-utility klasörüne atıp 1-PRESS_HERE.bat dosyasına tıklayarak çalıştırın. 
+3- Sonrasında config.bin dosyasını da zte-config-utility klasörüne atıp 1-PRESS_HERE.bat dosyasına tıklayarak çalıştırın. 
 
 5- xml dosyasını çıkardıktan sonra 600 saniye süreden geriye doğru saymaya başlayacak. Bu süre içerisinde;
 	config.xml dosyasını açınız ve düzenlenmesi gereken 2 kod satırını düzenleyiniz.
