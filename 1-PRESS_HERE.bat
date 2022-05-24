@@ -43,7 +43,7 @@ echo %ESC%[42mNOT:%ESC%[0m Kurulum baülayacak devam etmek iáin kurulumun tamamla
 timeout 5
 ::explorer "https://www.python.org/downloads/"
 powershell -command "Invoke-WebRequest https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe -Outfile python-3.10.4-amd64.exe"
-python-3.10.4-amd64.exe /quiet InstallAllUsers=1 PrependPath=1
+"%~dp0python-3.10.4-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1
 
 echo %ESC%[42mNOT:%ESC%[0m python kurulumu tamamlandç.
 timeout 5
