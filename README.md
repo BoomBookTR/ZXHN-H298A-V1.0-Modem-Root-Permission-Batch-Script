@@ -6,14 +6,8 @@
 <b>Yapılması gerekenler;</b>
 
 
-1- Bat ve py dosyasını <a href="https://github.com/mkst/zte-config-utility" target="_blank">zte-config-utility-master</a> içine atınız.
-
-2- (Python yoksa indirip kurun. Link: https://www.python.org/downloads/ )
-    Python kurarken **Add Phyton to Path** seçeneğini işaretleyin.
-				
-3- 1-PRESS_HERE.bat dosyasına tıklayın ve işlemlere devam ediniz. Modem Seri Numarasını sorduğunda alana modem arayüzünden kopyalayıp CTRL+V ile ya da farenin sağ tuşu ile yapıştırınız ve ilerleyiniz.
+1- 1-PRESS_HERE.bat dosyasına tıklayın ve işlemlere devam ediniz. Modem Seri Numarasını sorduğunda alana modem arayüzünden kopyalayıp CTRL+V ile ya da farenin sağ tuşu ile yapıştırınız ve ilerleyiniz.
 
 6- Sonrasında cmd işlemlerini tamamlayıp config.bin dosyasını modeminize geri yükleyebilirsiniz.
 
 7-;)
-	
