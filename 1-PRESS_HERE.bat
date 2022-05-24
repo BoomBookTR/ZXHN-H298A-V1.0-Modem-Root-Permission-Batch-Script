@@ -71,7 +71,7 @@ if exist "%~dp0zte-config-utility-master.zip" del "%~dp0zte-config-utility-maste
 if exist "%~dp0zte-config-utility-master" rd /s /q "%~dp0zte-config-utility-master"
 
 echo %ESC%[42mNOT:%ESC%[0m zte-config-utility zip dosyasç indirildi ve arüivden áçkarçldç.
-timeout 60
+timeout 5
 
 echo ============================================================================&
 
