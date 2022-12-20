@@ -77,7 +77,7 @@ timeout 5
 echo ============================================================================&
 
 :zcumodule
-py "%~dp0setup.py" install --user
+python "%~dp0setup.py" install --user
 echo %ESC%[42mzcu modÅlÅ yÅklemesi tamamlandi...%ESC%[0m 
 
 
@@ -121,7 +121,7 @@ set /p SeriNo=%ESC%[101;93mModem Seri Numarasçnç Gir:%ESC%[0m
 
 
 :export
-py examples/decode.py --serial %SeriNo% config.bin config.xml | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
+python examples/decode.py --serial %SeriNo% config.bin config.xml | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
 ::Traceback (most recent call last):
 
 :exportbitti
@@ -154,7 +154,7 @@ echo ===========================================================================
 :replace
 ::pushd "%~dp0"
 ::cd /d %~dp1
-py "%~dp0replace.py"
+python "%~dp0replace.py"
 
 echo ------------------------------------------------------------------------------------------
 
@@ -164,7 +164,7 @@ echo ---------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------
 
-py examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml config.bin | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
+python examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml config.bin | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
 ::Failed! Trying again, with signature: ZXHNH298AV1.0
 ::Malformed decrypted payload, likely you used the wrong key!
 
