@@ -1,3 +1,56 @@
+::  Written by @BoomBookTR
+
+
+@echo off
+setlocal EnableDelayedExpansion
+
+::net file to test privileges, 1>NUL redirects output, 2>NUL redirects errors
+NET FILE 1>NUL 2>NUL
+if '%errorlevel%' == '0' ( goto START ) else ( goto getPrivileges ) 
+
+:getPrivileges
+if '%1'=='ELEV' ( goto START )
+
+set "batchPath=%~f0"
+set "batchArgs=ELEV"
+
+::Add quotes to the batch path, if needed
+set "script=%0"
+set script=%script:"=%
+IF '%0'=='!script!' ( GOTO PathQuotesDone )
+    set "batchPath=""%batchPath%"""
+:PathQuotesDone
+
+::Add quotes to the arguments, if needed.
+:ArgLoop
+IF '%1'=='' ( GOTO EndArgLoop ) else ( GOTO AddArg )
+    :AddArg
+    set "arg=%1"
+    set arg=%arg:"=%
+    IF '%1'=='!arg!' ( GOTO NoQuotes )
+        set "batchArgs=%batchArgs% "%1""
+        GOTO QuotesDone
+        :NoQuotes
+        set "batchArgs=%batchArgs% %1"
+    :QuotesDone
+    shift
+    GOTO ArgLoop
+:EndArgLoop
+
+::Create and run the vb script to elevate the batch file
+echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\OEgetPrivileges.vbs"
+echo UAC.ShellExecute "cmd", "/c ""!batchPath! !batchArgs!""", "", "runas", 1 >> "%temp%\OEgetPrivileges.vbs"
+"%temp%\OEgetPrivileges.vbs" 
+exit /B
+
+:START
+::Remove the elevation tag and set the correct working directory
+IF '%1'=='ELEV' ( shift /1 )
+cd /d %~dp0
+
+:: .... code start ....
+
+
 @echo off
 setlocal
 call :setESC
@@ -42,9 +95,9 @@ echo %ESC%[42mNOT:%ESC%[0m Kurulum baülayacak devam etmek iáin kurulumun tamamla
 
 timeout 5
 ::explorer "https://www.python.org/downloads/"
-powershell -command "Invoke-WebRequest https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe -Outfile python-3.10.4-amd64.exe"
-::"%~dp0python-3.10.4-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 /log "%~dp0\Python-Install.log"
-"%~dp0python-3.10.4-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1
+powershell -command "Invoke-WebRequest https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe -Outfile python-3.11.1-amd64.exe"
+::"%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 /log "%~dp0\Python-Install.log"
+"%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_launcher=1 InstallLauncherAllUsers=1
 ::https://silentinstallhq.com/python-3-10-silent-install-how-to-guide/
 echo %ESC%[42mNOT:%ESC%[0m python kurulumu tamamlandç.
 timeout 5
@@ -77,7 +130,8 @@ timeout 5
 echo ============================================================================&
 
 :zcumodule
-python "%~dp0setup.py" install --user
+py "%~dp0setup.py" install --user
+::python "%~dp0setup.py" install --user
 echo %ESC%[42mzcu modÅlÅ yÅklemesi tamamlandi...%ESC%[0m 
 
 
@@ -121,7 +175,9 @@ set /p SeriNo=%ESC%[101;93mModem Seri Numarasçnç Gir:%ESC%[0m
 
 
 :export
-python examples/decode.py --serial %SeriNo% config.bin config.xml | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
+py examples/decode.py --serial %SeriNo% config.bin config.xml | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
+::python examples/decode.py --serial %SeriNo% config.bin config.xml | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
+
 ::Traceback (most recent call last):
 
 :exportbitti
@@ -154,7 +210,9 @@ echo ===========================================================================
 :replace
 ::pushd "%~dp0"
 ::cd /d %~dp1
-python "%~dp0replace.py"
+py "%~dp0replace.py"
+::python "%~dp0replace.py"
+
 
 echo ------------------------------------------------------------------------------------------
 
@@ -164,7 +222,10 @@ echo ---------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------
 
-python examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml config.bin | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
+py examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml config.bin | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
+::python examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml config.bin | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
+
+
 ::Failed! Trying again, with signature: ZXHNH298AV1.0
 ::Malformed decrypted payload, likely you used the wrong key!
 
