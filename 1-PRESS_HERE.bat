@@ -57,7 +57,7 @@ call :setESC
 cls
 
 
-title ZXHN H298A V1.0 modem root izni alma scripti
+title ZTE ZXHN H298A V1.0 modem root izni alma scripti
 
 echo ============================================================================&
 echo %ESC%[101;93m #Proje: ZTE H298A v1.0 modem iáin bÅtÅn root iülemlerini otomatik yapar. %ESC%[0m&
@@ -72,37 +72,83 @@ echo ===========================================================================
 
 
 :baslangic
-
 echo ============================================================================&
 
 
 
 ::for /r %userprofile%\AppData\Local\Programs\Python %%a in (python.exe) do @if exist %%a echo %ESC%[42mDURUM:%ESC%[0mpython bulundu.
 
+
 :pythonkontrol
 set /P e=%ESC%[93mPython yÅklensin mi?%ESC%[0m [%ESC%[92mE%ESC%[0m/%ESC%[92mH%ESC%[0m]?
 if /I "%e%" EQU "E" goto :pythonindir
-if /I "%e%" EQU "H" goto :ztekontrol
+if /I "%e%" EQU "H" goto :pycommandkontrol
 goto :pythonkontrol
 
 
-
-
-pause
 :pythonindir
 echo %ESC%[42mNOT:%ESC%[0m Kurulum baülayacak devam etmek iáin kurulumun tamamlanmasçnç bekleyin.
 ::echo %ESC%[42mNOT:%ESC%[0m Kurulum baülayacak, kurulum sçrasçnda %ESC%[92mAdd Phyton to Path%ESC%[0m seáeneßini iüaretleyin ve kurulumu tamamlayçn.
 
 timeout 5
 ::explorer "https://www.python.org/downloads/"
+if exist "%~dp0python-3.11.1-amd64.exe" (
+echo %ESC%[42mDURUM:%ESC%[0mpython-3.11.1-amd64.exe bulundu.
+
+"%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 InstallLauncherAllUsers=1
+) else (
+echo %ESC%[41mHATA:%ESC%[0m %ESC%[41mpython-3.11.1-amd64.exe dizinde bulunamadç. òndirilecek ve kurulum baülayacaktçr.%ESC%[0m
+timeout 5
 powershell -command "Invoke-WebRequest https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe -Outfile python-3.11.1-amd64.exe"
 ::"%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 /log "%~dp0\Python-Install.log"
-"%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_launcher=1 InstallLauncherAllUsers=1
+"%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 InstallLauncherAllUsers=1
+::"%~dp0python-3.11.1-amd64.exe" /quiet "%~dp0unattend.xml"
+::python-3.11.1-amd64.exe /quiet .\unattend.xml
+::"%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_launcher=1 InstallLauncherAllUsers=1
+::https://silentinstallhq.com/python-3-11-install-and-uninstall-powershell/
+::https://silentinstallhq.com/python-3-11-silent-install-how-to-guide/
 ::https://silentinstallhq.com/python-3-10-silent-install-how-to-guide/
+::https://docs.python.org/3/using/windows.html
 echo %ESC%[42mNOT:%ESC%[0m python kurulumu tamamlandç.
 timeout 5
+)
 
+:pycommandkontrol
+::How to fix error "'py.exe' is not recognized as an internal or external command, operable program or batch file"?
+::doskey py = python
+goto :pyindir
 
+:pyindir
+echo %ESC%[42mNot:%ESC%[0mpy Launcher sorunu varsa dÅzeltiliyor.
+::echo %ESC%[42mNOT:%ESC%[0m Kurulum baülayacak, kurulum sçrasçnda %ESC%[92mAdd Phyton to Path%ESC%[0m seáeneßini iüaretleyin ve kurulumu tamamlayçn.
+::explorer "https://www.python.org/downloads/"
+
+if exist "%~dp0python-3.11.1-amd64.exe" (
+echo %ESC%[42mDURUM:%ESC%[0mpython-3.11.1-amd64.exe bulundu.
+::"%~dp0python-3.11.1-amd64.exe" /uninstall /quiet
+::MsiExec.exe /x {8A19B72D-62A8-4198-BEBD-CAEF117194C8} /qn
+::MsiExec.exe /X {A28C27E4-A725-482A-9C65-61EDC0E4D583} /qn
+
+"%~dp0python-3.11.1-amd64.exe" /quiet Include_launcher=1 Include_pip=1 Include_tcltk=1 Shortcuts=1 Include_doc=1 InstallLauncherAllUsers=1
+) else (
+echo %ESC%[41mHATA:%ESC%[0m %ESC%[41mpython-3.11.1-amd64.exe dizinde bulunamadç. òndirilecek ve iülem baülayacaktçr.%ESC%[0m
+timeout 5
+::"%~dp0python-3.11.1-amd64.exe" /uninstall /quiet
+::MsiExec.exe /x {463B0974-B1E1-401E-8F59-B0F9F81258E4} /qn
+::MsiExec.exe /X {A28C27E4-A725-482A-9C65-61EDC0E4D583} /qn
+powershell -command "Invoke-WebRequest https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe -Outfile python-3.11.1-amd64.exe"
+::"%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 /log "%~dp0\Python-Install.log"
+"%~dp0python-3.11.1-amd64.exe" /quiet Include_launcher=1 Include_pip=1 Include_tcltk=1 Shortcuts=1 Include_doc=1 InstallLauncherAllUsers=1
+::"%~dp0python-3.11.1-amd64.exe" /quiet "%~dp0unattend.xml"
+::python-3.11.1-amd64.exe /quiet .\unattend.xml
+::"%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_launcher=1 InstallLauncherAllUsers=1
+::https://silentinstallhq.com/python-3-11-install-and-uninstall-powershell/
+::https://silentinstallhq.com/python-3-11-silent-install-how-to-guide/
+::https://silentinstallhq.com/python-3-10-silent-install-how-to-guide/
+::https://docs.python.org/3/using/windows.html
+echo %ESC%[42mNOT:%ESC%[0m py launcher sorunu varsa dÅzeltildi.
+timeout 5
+)
 
 
 echo ============================================================================&
@@ -129,10 +175,12 @@ timeout 5
 
 echo ============================================================================&
 
+
+
 :zcumodule
 py "%~dp0setup.py" install --user
 ::python "%~dp0setup.py" install --user
-echo %ESC%[42mzcu modÅlÅ yÅklemesi tamamlandi...%ESC%[0m 
+echo %ESC%[42mzcu modÅlÅ yÅklemesi tamamlandç...%ESC%[0m 
 
 
 :pipinstallupgrade
@@ -146,13 +194,13 @@ pip install --upgrade pip
 pip install pycryptodomex
 
 
-echo %ESC%[42mpip pycryptodemux yuklemesi tamamlandi...%ESC%[0m 
+echo %ESC%[42mpip pycryptodemux yÅklemesi tamamlandç...%ESC%[0m 
 echo ------------------------------------------------------------------------------------------
 
 for %%c in (*) do (if exist "C:\Python%%c\python.exe" (cd /d "C:\Python%%c")
 if exist "%LocalAppData%\Programs\Python\Python%%c\python.exe" (cd /d "%LocalAppData%\Programs\Python\Python%%c"))
 
-echo %ESC%[101;93m config.xml export zamani!  %ESC%[0m  
+echo %ESC%[101;93m config.xml export zamanç!  %ESC%[0m  
 
 echo ============================================================================&
 
@@ -162,7 +210,7 @@ echo %ESC%[42mDURUM:%ESC%[0mconfig.bin bulundu.
 
   goto :serinogir
 ) else (
-echo %ESC%[41mHATA:%ESC%[0m %ESC%[41mconfig.bin dizinde bulunamadç. Modem Åzerinden indirilen config.bin dosyasçnç dizine kopyalayçnçz.%ESC%[0m
+echo %ESC%[41mHATA:%ESC%[0m %ESC%[41mconfig.bin dizinde bulunamadç. Modem Åzerinden indirilen config.bin dosyasçnç klasîr konumuna kopyalayçnçz.%ESC%[0m
 timeout 60
 goto :configkontrol
 )
@@ -175,13 +223,26 @@ set /p SeriNo=%ESC%[101;93mModem Seri Numarasçnç Gir:%ESC%[0m
 
 
 :export
-py examples/decode.py --serial %SeriNo% config.bin config.xml | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
-::python examples/decode.py --serial %SeriNo% config.bin config.xml | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
+py examples/decode.py --serial %SeriNo% config.bin config.xml | find /i "Successfully decoded using serial" & if not errorlevel 1 (
+echo *************************************************
+goto :exportbitti
+) else (
+echo *************************************************
+echo HATA: Seri numarasç yanlçü! Doßru seri numarasç girin!
+echo HATA: Seri numarasç yanlçü! Doßru seri numarasç girin!
+echo HATA: Seri numarasç yanlçü! Doßru seri numarasç girin!
+echo HATA: Seri numarasç yanlçü! Doßru seri numarasç girin!
+echo HATA: Seri numarasç yanlçü! Doßru seri numarasç girin!
+goto :serinogir
+)
+::py examples/decode.py --serial %SeriNo% config.bin config.xml | find /i "Successfully decoded using serial" & if not errorlevel 1 (goto :exportbitti) else (goto :serinogir)
+::python examples/decode.py --serial %SeriNo% config.bin config.xml | find /i "Successfully decoded using serial" && (echo.&echo ************************************************* & if errorlevel 2 goto :exportbitti) || (echo Baüarçsçz... Seri numarasçnç tekrar gir & goto :serinogir) &
+
 
 ::Traceback (most recent call last):
 
 :exportbitti
-echo %ESC%[42mconfig.xml EXPORT TAMAMLANDI  %ESC%[0m 
+echo %ESC%[42mconfig.xml EXPORT tamamlandç  %ESC%[0m 
 
 :replacekontrol
 if exist "%~dp0replace.py" (
@@ -189,7 +250,7 @@ echo %ESC%[42mDURUM:%ESC%[0mreplace.py bulundu.
 
   goto :replace
 ) else (
-echo %ESC%[41mHATA:%ESC%[0m %ESC%[41mreplace.py dizinde bulunamadç. òndirilecek ve dizine kopyalanacak.%ESC%[0m
+echo %ESC%[41mHATA:%ESC%[0m %ESC%[41mreplace.py dizinde bulunamadç. òndirilecek...%ESC%[0m
 timeout 5
 goto :replaceindir
 )
@@ -217,13 +278,26 @@ py "%~dp0replace.py"
 echo ------------------------------------------------------------------------------------------
 
 :import
-echo %ESC%[101;93mconfig.bin import zamani!  %ESC%[0m  
+echo %ESC%[101;93mconfig.bin import zamanç!  %ESC%[0m  
 echo ------------------------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------
 
-py examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml config.bin | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
-::python examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml config.bin | find /i "Failed! Trying again" && (echo.&echo ************************************************* &echo.&choice /n /c HE /m "Baüarçsçz...Seri numarasçnç yeniden girin? (E/H)" & if errorlevel 1 goto serinogir) || (echo Tamam...) &
+py examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml config.bin | find /i "Done" & if not errorlevel 1 (
+echo *************************************************
+goto :importbitti
+) else (
+echo *************************************************
+echo HATA: Seri numarasç yanlçü! Doßru seri numarasç girin!
+echo HATA: Seri numarasç yanlçü! Doßru seri numarasç girin!
+echo HATA: Seri numarasç yanlçü! Doßru seri numarasç girin!
+echo HATA: Seri numarasç yanlçü! Doßru seri numarasç girin!
+echo HATA: Seri numarasç yanlçü! Doßru seri numarasç girin!
+goto :serinogir
+)
+
+::py examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml config.bin | find /i "Done" & if not errorlevel 1 (goto :importbitti) else (goto :serinogir)
+::python examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml config.bin | find /i "Done" & if not errorlevel 1 (goto :importbitti) else (goto :serinogir)
 
 
 ::Failed! Trying again, with signature: ZXHNH298AV1.0
@@ -233,7 +307,7 @@ py examples/encode.py --serial %SeriNo% --signature "ZXHN H298A V1.0" config.xml
 
 
 :importbitti
-echo %ESC%[42mconfig.xml IMPORT TAMAMLANDI  %ESC%[0m 
+echo %ESC%[42mconfig.xml IMPORT tamamlandç.  %ESC%[0m 
 
 echo ------------------------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------
@@ -242,10 +316,12 @@ echo ---------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------
 echo ------------------------------------------------------------------------------------------
 
-echo %ESC%[42m TUM ISLEMLER TAMAMLANDI. config.bin dosyanizi modem arayuzunden geri yukleyebilirsiniz.  %ESC%[0m 
+echo %ESC%[42m TöM òSLEMLER tamamlandç. config.bin dosyançzç modem arayÅzÅnden geri yÅkleyebilirsiniz.  %ESC%[0m 
 
 :cikis
 pause
+
+
 
 :setESC
 for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (
