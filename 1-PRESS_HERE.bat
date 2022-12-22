@@ -90,7 +90,6 @@ goto :pythonkontrol
 echo %ESC%[42mNOT:%ESC%[0m Kurulum baülayacak devam etmek iáin kurulumun tamamlanmasçnç bekleyin.
 ::echo %ESC%[42mNOT:%ESC%[0m Kurulum baülayacak, kurulum sçrasçnda %ESC%[92mAdd Phyton to Path%ESC%[0m seáeneßini iüaretleyin ve kurulumu tamamlayçn.
 
-timeout 5
 ::explorer "https://www.python.org/downloads/"
 if exist "%~dp0python-3.11.1-amd64.exe" (
 echo %ESC%[42mDURUM:%ESC%[0mpython-3.11.1-amd64.exe bulundu.
@@ -98,7 +97,7 @@ echo %ESC%[42mDURUM:%ESC%[0mpython-3.11.1-amd64.exe bulundu.
 "%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 InstallLauncherAllUsers=1
 ) else (
 echo %ESC%[41mHATA:%ESC%[0m %ESC%[41mpython-3.11.1-amd64.exe dizinde bulunamadç. òndirilecek ve kurulum baülayacaktçr.%ESC%[0m
-timeout 5
+
 powershell -command "Invoke-WebRequest https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe -Outfile python-3.11.1-amd64.exe"
 ::"%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 /log "%~dp0\Python-Install.log"
 "%~dp0python-3.11.1-amd64.exe" /quiet InstallAllUsers=1 PrependPath=1 InstallLauncherAllUsers=1
@@ -110,7 +109,6 @@ powershell -command "Invoke-WebRequest https://www.python.org/ftp/python/3.11.1/
 ::https://silentinstallhq.com/python-3-10-silent-install-how-to-guide/
 ::https://docs.python.org/3/using/windows.html
 echo %ESC%[42mNOT:%ESC%[0m python kurulumu tamamlandç.
-timeout 5
 )
 
 :pycommandkontrol
@@ -132,7 +130,7 @@ echo %ESC%[42mDURUM:%ESC%[0mpython-3.11.1-amd64.exe bulundu.
 "%~dp0python-3.11.1-amd64.exe" /quiet Include_launcher=1 Include_pip=1 Include_tcltk=1 Shortcuts=1 Include_doc=1 InstallLauncherAllUsers=1
 ) else (
 echo %ESC%[41mHATA:%ESC%[0m %ESC%[41mpython-3.11.1-amd64.exe dizinde bulunamadç. òndirilecek ve iülem baülayacaktçr.%ESC%[0m
-timeout 5
+
 ::"%~dp0python-3.11.1-amd64.exe" /uninstall /quiet
 ::MsiExec.exe /x {463B0974-B1E1-401E-8F59-B0F9F81258E4} /qn
 ::MsiExec.exe /X {A28C27E4-A725-482A-9C65-61EDC0E4D583} /qn
@@ -147,7 +145,6 @@ powershell -command "Invoke-WebRequest https://www.python.org/ftp/python/3.11.1/
 ::https://silentinstallhq.com/python-3-10-silent-install-how-to-guide/
 ::https://docs.python.org/3/using/windows.html
 echo %ESC%[42mNOT:%ESC%[0m py launcher sorunu varsa dÅzeltildi.
-timeout 5
 )
 
 
@@ -171,7 +168,6 @@ if exist "%~dp0zte-config-utility-master.zip" del "%~dp0zte-config-utility-maste
 if exist "%~dp0zte-config-utility-master" rd /s /q "%~dp0zte-config-utility-master"
 
 echo %ESC%[42mNOT:%ESC%[0m zte-config-utility zip dosyasç indirildi ve arüivden áçkarçldç.
-timeout 5
 
 echo ============================================================================&
 
@@ -251,7 +247,7 @@ echo %ESC%[42mDURUM:%ESC%[0mreplace.py bulundu.
   goto :replace
 ) else (
 echo %ESC%[41mHATA:%ESC%[0m %ESC%[41mreplace.py dizinde bulunamadç. òndirilecek...%ESC%[0m
-timeout 5
+
 goto :replaceindir
 )
 
@@ -262,7 +258,7 @@ if not exist "%~dp0replace.py" powershell -command "Invoke-WebRequest https://ra
 echo %ESC%[42mNOT:%ESC%[0m zte-config-utility zip dosyasç indirildi.
 goto :replacekontrol
 
-timeout 5
+
 
 echo ============================================================================&
 
