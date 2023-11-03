@@ -1,7 +1,9 @@
 # ZXHN-H298A-V1.0-Modem-Root-Permission-Batch-Script
 İşlem basamakları videolu olarak şu videoda mevcuttur. Bu batch scripti ve py dosyası bu işlemleri otomatik olarak yapmaktadır. Tek yapmanız gereken birkaç adımı sorunsuz yapmak.
 
-[![Temel Mantık](https://yt-embed.live/embed?v=G1BrJW67SMQ)](https://www.youtube.com/watch?v=G1BrJW67SMQ "Temel Mantık")
+
+
+[![Temel Mantık](https://github.com/BoomBookTR/ZXHN-H298A-V1.0-Modem-Root-Permission-Batch-Script/assets/10184695/37d2aba0-75d0-42e0-bf38-d51b996e4e87)](https://www.youtube.com/watch?v=G1BrJW67SMQ "Temel Mantık")
 
 # <b>İndirin</b>
 
