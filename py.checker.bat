@@ -2,8 +2,6 @@
 
 py --version
 
-pip list
-
 echo ------- -------
 py --version >nul 2>&1
 if %errorlevel% neq 0 (
@@ -13,10 +11,7 @@ if %errorlevel% neq 0 (
 )
 echo ------- -------
 
-
 python --version
-
-pip list
 
 echo ------- -------
 python --version >nul 2>&1
@@ -25,5 +20,13 @@ if %errorlevel% neq 0 (
 ) else (
     echo "python komutu calisiyor."
 )
+echo ------- -------
+echo ------- -------
+echo ------- -------
+pip list
+echo ------- -------
+echo ------- -------
+echo ------- -------
+where python
 echo ------- -------
 pause
