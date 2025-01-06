@@ -19,6 +19,4 @@
 
 <b>4-</b> ;)
 
-# <b>Önemli NOT;</b>
 
-<b>1-</b> Eğer py komutu ile ilgili hata verirse batch 2-PRESS_HERE.bat adlı dosyayı açıp deneyin.
