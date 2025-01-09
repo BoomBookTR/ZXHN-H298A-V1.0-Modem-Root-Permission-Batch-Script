@@ -1,3 +1,9 @@
+# <b>Önemli Not:</b>
+
+ Yazılım Versiyonu TTN.26_240416 olarak ISS tarafından yükseltildi.
+ ZXHN H298A V1.0 TTN.26_240416 için şu anda çalışmıyor!
+ 
+
 # ZXHN-H298A-V1.0-Modem-Root-Permission-Batch-Script
 İşlem basamakları videolu olarak şu videoda mevcuttur. Bu batch scripti ve py dosyası bu işlemleri otomatik olarak yapmaktadır. Tek yapmanız gereken birkaç adımı sorunsuz yapmak.
 
