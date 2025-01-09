@@ -1,7 +1,10 @@
 # <b>Önemli Not:</b>
 
- Yazılım Versiyonu TTN.26_240416 olarak ISS tarafından yükseltildi.
- ZXHN H298A V1.0 TTN.26_240416 için şu anda çalışmıyor!
+ Yazılım Versiyonu TTN.26_240416 olarak ISS tarafından yükseltildi. 
+ 
+ ZXHN H298A V1.0 TTN.26_240416 için şu anda çalışmıyor! Önceki sürümler için sorun yoktur.
+
+ Eğer açılmama gibi sorun olursa sağ tıklayıp Yönetici olarak çalıştırın. Hata verir, bir şeyler ters giderse C veya D sürücüsüne Test adında klasörü açıp içinde çalıştırın. Dosya yolu kaynaklı bazen sorun olabiliyor.
  
 
 # ZXHN-H298A-V1.0-Modem-Root-Permission-Batch-Script
